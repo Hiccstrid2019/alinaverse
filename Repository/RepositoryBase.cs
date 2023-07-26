@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Contracts;
+using Dapper;
 using Entities.Models;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,9 @@ public class RepositoryBase
         Dapper.SqlMapper.SetTypeMap(
             typeof(Token),
             new ColumnAttributeTypeMapper<Token>());
+        Dapper.SqlMapper.SetTypeMap(
+            typeof(Tweet),
+            new ColumnAttributeTypeMapper<Tweet>());
     }
     public IDbConnection Connection
     {
